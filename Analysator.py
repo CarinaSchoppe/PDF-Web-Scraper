@@ -1,4 +1,3 @@
-# Schritt 3
 import os
 
 import PyPDF2
@@ -7,6 +6,7 @@ import main
 from main import download_path, words
 
 
+# Schritt 3
 def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, analysor: bool = False) -> bool:
     if not analysor:
         if file is None:

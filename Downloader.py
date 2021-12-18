@@ -6,7 +6,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-
 def download_files_from_websites(urls: set) -> None:
     from Analysator import analyse_pdf_files_for_content
     from main import analyse_straight, words, download_path

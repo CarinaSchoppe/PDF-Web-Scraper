@@ -67,7 +67,8 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                             good_page = True
                             page_content = pdfFile.getPage(page).extractText()
                             for word in filter_dict:
-                                if word not in page_content:
+                                word_counter = page_content.count(word)
+                                if word_counter < filter_dict[word]:
                                     good_page = False
                             if good_page:
                                 print("page is relevant")

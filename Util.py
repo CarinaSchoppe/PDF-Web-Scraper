@@ -4,7 +4,7 @@ from Searcher import get_website_links
 
 
 def getInputs() -> None:
-    main.download_path = input("Enter the path to the folder where the files should be downloaded: ")
+    main.download_path = input("Enter the path to the folder where the files should be: ")
     if main.download_path == "":
         return getInputs()
     folder = input("Analyse folder? (y/n): ").lower()

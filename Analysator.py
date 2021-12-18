@@ -51,12 +51,12 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                 return False
     elif analysor:
         try:
-            with open(os.path.join(main.folderLocation, "pages.txt"), "w") as data_file:
-                for data in os.listdir(main.folderLocation):
+            with open(os.path.join(main.download_path, "pages.txt"), "w") as data_file:
+                for data in os.listdir(main.download_path):
                     if data.endswith(".pdf"):
                         print("analyse file:", data)
                         page_counter = {data: []}
-                        path = f"{main.folderLocation}\\{data}"
+                        path = f"{main.download_path}\\{data}"
                         try:
                             pdfFile = PyPDF2.PdfFileReader(path)
                         except Exception:

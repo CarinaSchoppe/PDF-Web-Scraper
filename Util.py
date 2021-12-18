@@ -4,20 +4,18 @@ from Searcher import get_website_links
 
 
 def getInputs() -> None:
-    main.folderLocation = input("Enter the folder location: ")
-    if main.folderLocation == "":
-        return getInputs()
     main.download_path = input("Enter the path to the folder where the files should be downloaded: ")
     if main.download_path == "":
         return getInputs()
-    straight = input("Analyse straight? (y/n): ").lower()
-    if straight != "y" and straight != "n":
-        return getInputs()
-    main.analyse_straight = straight == "y"
     folder = input("Analyse folder? (y/n): ").lower()
     if folder != "y" and folder != "n":
         return getInputs()
     main.analyse_folder = folder == "y"
+    if not main.analyse_folder:
+        straight = input("Analyse straight? (y/n): ").lower()
+        if straight != "y" and straight != "n":
+            return getInputs()
+        main.analyse_straight = straight == "y"
     if not main.analyse_folder:
         main.queries = input("Enter the queries (separated by comma): ")
         if main.queries == "" and not main.analyse_folder:
@@ -25,7 +23,6 @@ def getInputs() -> None:
         main.queries = main.queries.split(",")
     main.words = {}
     filter_words = input("Enter the words that should be filtered (separated by comma): ")
-
     if filter_words != "":
         filter_words = filter_words.split(",")
         for word in filter_words:

@@ -4,7 +4,6 @@ downloade diese und "analysiere" sie (z.B. zeitungsartikel) und speichere sie da
 """
 
 download_path = r"C:\Users\Carina\Downloads"
-folderLocation = r"C:\Users\Carina\Downloads"
 analyse_straight = True
 analyse_folder = False
 queries = {"Finite Element Methods", "Finite Element Analysis", "Finite Element"}
@@ -15,5 +14,4 @@ if __name__ == "__main__":
     from Util import getInputs
 
     getInputs()
-
     print("Program is done")

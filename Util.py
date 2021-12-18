@@ -1,27 +1,32 @@
+import main
+
+
 def getInputs() -> None:
-    global download_path
-    global analyse_straight
-    global queries
-    global words
-    global search_result_amounts
-    download_path = input("Enter the path to the folder where the files should be downloaded: ")
-    if download_path == "":
+    main.folderLocation = input("Enter the folder location: ")
+    if main.folderLocation == "":
+        return getInputs()
+    main.download_path = input("Enter the path to the folder where the files should be downloaded: ")
+    if main.download_path == "":
         return getInputs()
     straight = input("Analyse straight? (y/n): ").lower()
     if straight != "y" and straight != "n":
         return getInputs()
-    analyse_straight = straight == "y"
-    queries = input("Enter the queries (separated by comma): ")
-    if queries == "":
+    main.analyse_straight = straight == "y"
+    folder = input("Analyse folder? (y/n): ").lower()
+    if folder != "y" and folder != "n":
         return getInputs()
-    queries = queries.split(",")
-    words = {}
+    main.analyse_folder = folder == "y"
+    main.queries = input("Enter the queries (separated by comma): ")
+    if main.queries == "":
+        return getInputs()
+    main.queries = main.queries.split(",")
+    main.words = {}
     filter_words = input("Enter the words that should be filtered (separated by comma): ")
     if filter_words != "":
         filter_words = filter_words.split(",")
         for word in filter_words:
-            words[word] = getNumer(word)
-    search_result_amounts = getInputNumer()
+            main.words[word] = getNumer(word)
+    main.search_result_amounts = getInputNumer()
 
 
 def getNumer(word: str) -> int:

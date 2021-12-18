@@ -41,7 +41,7 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                     print("file: ", file, " is relevant with: ", pdf_reader.getNumPages(), " pages.\n")
                     return False
             except Exception:
-                print("Error opening the file. The file cant be read!")
+                print("Error opening the file. The file cant be read!\n")
                 os.remove(file)
                 print("File deleted!")
             if not is_relevant:
@@ -60,7 +60,7 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                         try:
                             pdfFile = PyPDF2.PdfFileReader(path)
                         except Exception:
-                            print("Error opening the file. The file cant be read!")
+                            print("Error opening the file. The file cant be read!\n")
                             os.remove(file)
                             print("File deleted!")
                         for page in range(pdfFile.numPages):

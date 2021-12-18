@@ -21,14 +21,13 @@ def getInputs() -> None:
         if main.queries == "" and not main.analyse_folder:
             return getInputs()
         main.queries = main.queries.split(",")
-    main.words = {}
     filter_words = input("Enter the words that should be filtered (separated by comma): ")
+    main.words.clear()
     if filter_words != "":
         filter_words = filter_words.split(",")
         for word in filter_words:
             main.words[word] = getNumer(word)
-    else:
-        main.words.clear()
+
     if not main.analyse_folder:
         main.search_result_amounts = getInputNumer()
     print("\nInput is done starting the program!\n")

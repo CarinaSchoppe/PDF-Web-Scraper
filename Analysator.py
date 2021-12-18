@@ -25,9 +25,9 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
             is_relevant = True
             try:
                 pdf_reader = PyPDF2.PdfFileReader(file)
-            except:
+            except Exception as e:
                 print("Error opening the file. The file cant be read!")
-                os.remove(f"{download_path}\\{file}")
+                os.remove(file)
                 print("File deleted!")
             for word in words:
                 counter = 0

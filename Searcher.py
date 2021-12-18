@@ -2,11 +2,11 @@ from googlesearch import search
 import os
 
 # Schritt 1
-from Downloader import download_files_from_websites
 from main import download_path
 
 
 def get_website_links(queries: set, amount: int) -> None:
+    from Downloader import download_files_from_websites
     urls = []
     for query in queries:
         print("Queryterm:", query)

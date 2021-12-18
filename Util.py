@@ -1,4 +1,6 @@
 import main
+from Analysator import analyse_pdf_files_for_content
+from Searcher import get_website_links
 
 
 def getInputs() -> None:
@@ -17,16 +19,24 @@ def getInputs() -> None:
         return getInputs()
     main.analyse_folder = folder == "y"
     main.queries = input("Enter the queries (separated by comma): ")
-    if main.queries == "":
+    if main.queries == "" and not main.analyse_folder:
         return getInputs()
     main.queries = main.queries.split(",")
     main.words = {}
     filter_words = input("Enter the words that should be filtered (separated by comma): ")
+
     if filter_words != "":
         filter_words = filter_words.split(",")
         for word in filter_words:
             main.words[word] = getNumer(word)
+    else:
+        main.words = {}
     main.search_result_amounts = getInputNumer()
+    print("\nInput is done starting the program!\n")
+    if main.analyse_folder:
+        analyse_pdf_files_for_content(file=None, filter_dict=main.words, analysor=True)
+    else:
+        get_website_links(main.queries, main.search_result_amounts)
 
 
 def getNumer(word: str) -> int:

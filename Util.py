@@ -18,10 +18,11 @@ def getInputs() -> None:
     if folder != "y" and folder != "n":
         return getInputs()
     main.analyse_folder = folder == "y"
-    main.queries = input("Enter the queries (separated by comma): ")
-    if main.queries == "" and not main.analyse_folder:
-        return getInputs()
-    main.queries = main.queries.split(",")
+    if not main.analyse_folder:
+        main.queries = input("Enter the queries (separated by comma): ")
+        if main.queries == "" and not main.analyse_folder:
+            return getInputs()
+        main.queries = main.queries.split(",")
     main.words = {}
     filter_words = input("Enter the words that should be filtered (separated by comma): ")
 
@@ -30,8 +31,9 @@ def getInputs() -> None:
         for word in filter_words:
             main.words[word] = getNumer(word)
     else:
-        main.words = {}
-    main.search_result_amounts = getInputNumer()
+        main.words.clear()
+    if not main.analyse_folder:
+        main.search_result_amounts = getInputNumer()
     print("\nInput is done starting the program!\n")
     if main.analyse_folder:
         analyse_pdf_files_for_content(file=None, filter_dict=main.words, analysor=True)
@@ -43,7 +45,7 @@ def getNumer(word: str) -> int:
     try:
         x = int(input(f"Enter the amount of \"{word}\" that should be found: "))
         return x
-    except:
+    except Exception:
         print("Please enter a number!")
         return getNumer(word)
 
@@ -52,6 +54,6 @@ def getInputNumer() -> int:
     try:
         x = int(input("Enter the amount of search results: "))
         return x
-    except:
+    except Exception:
         print("Please enter a number!")
         return getInputNumer()

@@ -18,27 +18,32 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                         try:
                             os.remove(path)
                             print("file deleted")
-                        except:
+                        except Exception:
                             print("Could not delete file!")
                 print()
         elif file is not None:
             is_relevant = True
             try:
                 pdf_reader = PyPDF2.PdfFileReader(file)
-            except Exception as e:
+                for word in words:
+                    counter = 0
+                    for page in range(pdf_reader.numPages):
+                        page_content = pdf_reader.getPage(page).extractText()
+                        counter += page_content.count(word)
+                    print(word, "found", counter, "times")
+                    if counter < filter_dict[word]:
+                        print("file is not relevant")
+                        is_relevant = False
+                        break
+                if not is_relevant:
+                    return True
+                else:
+                    print("file: ", file, " is relevant with: ", pdf_reader.getNumPages(), " pages.\n")
+                    return False
+            except Exception:
                 print("Error opening the file. The file cant be read!")
                 os.remove(file)
                 print("File deleted!")
-            for word in words:
-                counter = 0
-                for page in range(pdf_reader.numPages):
-                    page_content = pdf_reader.getPage(page).extractText()
-                    counter += page_content.count(word)
-                print(word, "found", counter, "times")
-                if counter < filter_dict[word]:
-                    print("file is not relevant")
-                    is_relevant = False
-                    break
             if not is_relevant:
                 return True
             else:
@@ -52,7 +57,12 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                         print("analyse file:", data)
                         page_counter = {data: []}
                         path = f"{main.folderLocation}\\{data}"
-                        pdfFile = PyPDF2.PdfFileReader(path)
+                        try:
+                            pdfFile = PyPDF2.PdfFileReader(path)
+                        except Exception:
+                            print("Error opening the file. The file cant be read!")
+                            os.remove(file)
+                            print("File deleted!")
                         for page in range(pdfFile.numPages):
                             good_page = True
                             page_content = pdfFile.getPage(page).extractText()
@@ -67,5 +77,6 @@ def analyse_pdf_files_for_content(filter_dict: dict = words, file: str = None, a
                             for page in page_counter[data]:
                                 data_file.write(f"- {page}\n")
                             data_file.write("\n")
+                    print("\n")
         except Exception as e:
             print(e)

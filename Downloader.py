@@ -31,11 +31,11 @@ def download_files_from_websites(urls: set) -> None:
                                 try:
                                     os.remove(file_name)
                                     print("File deleted!\n")
-                                except:
+                                except Exception:
                                     print(f"Could not delete file {file}")
                 else:
                     print("File already exists!")
-        except:
+        except Exception:
             continue
         print("")
     print("all files downloaded")

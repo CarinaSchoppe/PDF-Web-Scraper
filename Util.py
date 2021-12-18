@@ -1,3 +1,11 @@
+#  Copyright Notice for YitongSuperProf
+#  Copyright (c) at Carina Schoppe 2021
+#  File created on 18.12.21, 16:08 by Carina Latest changes made by Carina on 18.12.21, 16:01 All contents of "Util.py" are protected by copyright. The copyright law, unless expressly indicated otherwise, is
+#  at Carina Schoppe. All rights reserved
+#  Any type of duplication, distribution, rental, sale, award,
+#  Public accessibility or other use
+#  requires the express written consent of Carina Schoppe.
+
 import main
 from Analysator import analyse_pdf_files_for_content
 from Searcher import get_website_links

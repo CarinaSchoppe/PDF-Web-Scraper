@@ -1,3 +1,11 @@
+#  Copyright Notice for YitongSuperProf
+#  Copyright (c) at Carina Schoppe 2021
+#  File created on 18.12.21, 16:08 by Carina Latest changes made by Carina on 18.12.21, 15:49 All contents of "Searcher.py" are protected by copyright. The copyright law, unless expressly indicated otherwise, is
+#  at Carina Schoppe. All rights reserved
+#  Any type of duplication, distribution, rental, sale, award,
+#  Public accessibility or other use
+#  requires the express written consent of Carina Schoppe.
+
 import os
 
 from googlesearch import search

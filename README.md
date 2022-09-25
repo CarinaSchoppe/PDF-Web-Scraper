@@ -1,4 +1,4 @@
-#  Copyright Notice for YitongSuperProf
+#  Copyright Notice for PDF-Web-Scraper
 #  Copyright (c) at Carina Schoppe 2021
 #  File created on 18.12.21, 16:10 by Carina Latest changes made by Carina on 18.12.21, 16:10
 #  All contents of "Analysator.py" are protected by copyright.
